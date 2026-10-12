@@ -42,6 +42,7 @@ Es una versión jugable del Tetris clásico con todas las mecánicas que esperar
 - **Sistema de puntuación** clásico de Tetris (100 / 300 / 500 / 800 multiplicado por nivel).
 - **Niveles** que aumentan cada 10 líneas y aceleran la caída.
 - **Pausa** y **Game Over** con opción de reinicio.
+- **Skins visuales** seleccionables desde el panel lateral: _Retro_, _Neón_, _Pastel_ y _Pixel art_. La preferencia se guarda en `localStorage` y el cambio se aplica al instante, sin recargar.
 
 ---
 
@@ -97,7 +98,7 @@ El juego se compone de tres archivos que cooperan:
 Define la estructura visual:
 
 - Un `<canvas id="board">` de **300 × 600** píxeles donde se renderiza el tablero.
-- Un panel lateral con `SCORE`, `LINES`, `LEVEL`, vista de la siguiente pieza y la lista de controles.
+- Un panel lateral con `SCORE`, `LINES`, `LEVEL`, vista de la siguiente pieza, selector de skin y la lista de controles.
 - Un overlay para los estados **PAUSA** y **GAME OVER**.
 
 ### 2. `style.css`
@@ -173,9 +174,31 @@ Algunos parámetros fáciles de tunear en `game.js`:
 | `COLS`         | Columnas del tablero                     | `10`                  |
 | `ROWS`         | Filas del tablero                        | `20`                  |
 | `BLOCK`        | Tamaño en píxeles de cada celda          | `30`                  |
-| `COLORS`       | Paleta de colores por tipo de pieza      | 7 colores             |
+| `COLORS`       | Paleta de la skin Retro por pieza        | 7 colores             |
 | `LINE_SCORES`  | Puntos por 1, 2, 3 o 4 líneas eliminadas | `[0,100,300,500,800]` |
 | `dropInterval` | Velocidad inicial de caída en ms         | `1000`                |
+
+### Skins
+
+Las skins están definidas en el objeto `SKINS` de `game.js` (sección `// ---- Skins ----`). Cada skin declara:
+
+| Propiedad    | Significado                                                      |
+| ------------ | ---------------------------------------------------------------- |
+| `name`       | Etiqueta visible en el selector                                  |
+| `colors`     | Paleta por tipo de pieza (índices 1–7)                           |
+| `boardBg`    | Color de fondo pintado en los canvas (tablero y siguiente pieza) |
+| `gridColor`  | Color de las líneas de la cuadrícula                             |
+| `ghostAlpha` | Opacidad de la pieza fantasma                                    |
+| `drawBlock`  | Función `(context, x, y, colorIndex, size)` que dibuja un bloque |
+
+Skins incluidas:
+
+- **Retro**: bloques cuadrados y colores planos (aspecto original).
+- **Neón**: fondo negro y efecto _glow_ con `shadowBlur` del canvas.
+- **Pastel**: colores suaves sobre fondo claro y bordes redondeados (`roundRect`, con _fallback_ vía `arcTo`).
+- **Pixel art**: biselado claro/oscuro y patrón de textura _dither_ dibujado sobre cada bloque.
+
+La skin elegida se guarda en `localStorage` bajo la clave `tetris.skin`. Para añadir una nueva basta con agregar una entrada a `SKINS`; el selector se rellena automáticamente. Los ajustes de CSS por skin usan el atributo `data-skin` del `<body>`.
 
 > Si cambias `COLS`, `ROWS` o `BLOCK`, recuerda ajustar también `width` y `height` del `<canvas id="board">` en `index.html` para que coincida (`COLS × BLOCK` × `ROWS × BLOCK`).
 
