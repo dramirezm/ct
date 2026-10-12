@@ -42,6 +42,18 @@ Es una versión jugable del Tetris clásico con todas las mecánicas que esperar
 - **Sistema de puntuación** clásico de Tetris (100 / 300 / 500 / 800 multiplicado por nivel).
 - **Niveles** que aumentan cada 10 líneas y aceleran la caída.
 - **Pausa** y **Game Over** con opción de reinicio.
+- **Tabla de récords local** (`localStorage`): top 5 puntuaciones con nombre del jugador, visibles en la pantalla de inicio y en el Game Over. Si la partida entra en el top se pide el nombre y se resalta la fila. Incluye **mejor combo**, **líneas máximas** y un botón para borrar los récords.
+
+### Récords
+
+- Al cargar la página aparece una **pantalla de inicio** con la tabla de récords; la partida no empieza hasta pulsar **Jugar**.
+- **Combo**: número de piezas consecutivas que eliminan al menos una línea. Se reinicia al fijar una pieza que no limpia ninguna.
+- Si se pulsa **Reiniciar** sin guardar, el récord se guarda igualmente con el nombre del campo (o `Anónimo`).
+- Claves usadas en `localStorage`:
+  - `tetris.highscores`: top 5 `{ name, score, lines, maxCombo, date }` ordenado por puntuación.
+  - `tetris.bests`: `{ maxCombo, maxLines }` de **todas** las partidas terminadas (no solo las del top 5).
+  - `tetris.lastName`: último nombre introducido (valor por defecto del campo).
+- **Borrar récords** elimina `tetris.highscores` y `tetris.bests` (pide confirmación).
 
 ---
 

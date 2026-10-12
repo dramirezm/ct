@@ -150,3 +150,142 @@ kbd {
 #restart-btn:hover {
   background: #9bbdff;
 }
+
+/* ---- High scores ---- */
+.hs-section,
+.hs-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.hs-section.hidden,
+.hs-form.hidden {
+  display: none;
+}
+
+.start-title {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: 6px;
+  color: #e57373;
+}
+
+.hs-table {
+  border-collapse: collapse;
+  background: #1a1a25;
+  border: 1px solid #2a2a3a;
+  font-size: 12px;
+  min-width: 300px;
+}
+
+.hs-table th {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #555570;
+  font-weight: 600;
+  padding: 6px 8px;
+  border-bottom: 1px solid #2a2a3a;
+}
+
+.hs-table td {
+  padding: 4px 8px;
+  color: #bbb;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.hs-table td:nth-child(2) {
+  font-family: inherit;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.hs-table td:nth-child(3) {
+  color: #7aa2f7;
+  font-weight: 700;
+}
+
+.hs-table tr.hs-highlight td {
+  background: rgba(122, 162, 247, 0.18);
+  color: #fff;
+}
+
+.hs-table td.hs-empty {
+  color: #555570;
+  font-family: inherit;
+  padding: 10px;
+}
+
+.hs-bests {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  color: #888;
+}
+
+.hs-new {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #ffd54f;
+}
+
+.hs-form-row {
+  display: flex;
+  gap: 6px;
+}
+
+#name-input {
+  background: #1a1a25;
+  border: 1px solid #3a3a5a;
+  border-radius: 6px;
+  color: #e0e0e0;
+  padding: 6px 10px;
+  font-size: 14px;
+  width: 150px;
+  user-select: text;
+}
+
+#name-input:focus {
+  outline: none;
+  border-color: #7aa2f7;
+}
+
+.btn {
+  background: #7aa2f7;
+  color: #0f0f17;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.15s;
+}
+
+.btn:hover {
+  background: #9bbdff;
+}
+
+#play-btn {
+  padding: 10px 36px;
+  margin-bottom: 8px;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #555570;
+  font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.btn-link:hover {
+  color: #e57373;
+}
