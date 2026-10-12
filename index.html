@@ -47,9 +47,47 @@
       <div class="overlay-box">
         <p id="overlay-title">GAME OVER</p>
         <p id="overlay-score"></p>
+        <!-- ---- High scores (game over) ---- -->
+        <div id="go-records" class="hs-section hidden">
+          <form id="new-record-form" class="hs-form hidden" autocomplete="off">
+            <p class="hs-new">¡Nuevo récord!</p>
+            <div class="hs-form-row">
+              <input id="name-input" type="text" maxlength="12" placeholder="Tu nombre" aria-label="Nombre del jugador" />
+              <button type="submit" class="btn">Guardar</button>
+            </div>
+          </form>
+          <span class="label">RÉCORDS</span>
+          <table class="hs-table">
+            <thead>
+              <tr><th>#</th><th>Nombre</th><th>Puntos</th><th>Líneas</th><th>Combo</th></tr>
+            </thead>
+            <tbody id="go-hs-body"></tbody>
+          </table>
+          <p class="hs-bests" id="go-bests"></p>
+          <button type="button" id="go-reset-btn" class="btn-link">Borrar récords</button>
+        </div>
+        <!-- ---- /High scores ---- -->
         <button id="restart-btn">Reiniciar</button>
       </div>
     </div>
+
+    <!-- ---- High scores (start screen) ---- -->
+    <div id="start-screen" class="overlay">
+      <div class="overlay-box">
+        <p class="start-title">TETRIS</p>
+        <button type="button" id="play-btn" class="btn">Jugar</button>
+        <span class="label">RÉCORDS</span>
+        <table class="hs-table">
+          <thead>
+            <tr><th>#</th><th>Nombre</th><th>Puntos</th><th>Líneas</th><th>Combo</th></tr>
+          </thead>
+          <tbody id="start-hs-body"></tbody>
+        </table>
+        <p class="hs-bests" id="start-bests"></p>
+        <button type="button" id="start-reset-btn" class="btn-link">Borrar récords</button>
+      </div>
+    </div>
+    <!-- ---- /High scores ---- -->
   </div>
 
   <script src="game.js"></script>
