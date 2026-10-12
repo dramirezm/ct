@@ -150,3 +150,66 @@ kbd {
 #restart-btn:hover {
   background: #9bbdff;
 }
+
+/* ---- Skins ---- */
+.skin-select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  background: #1a1a25 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237aa2f7'/%3E%3C/svg%3E") no-repeat right 10px center;
+  color: #e0e0e0;
+  border: 1px solid #2a2a3a;
+  border-radius: 4px;
+  padding: 6px 28px 6px 8px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Keep the selector above the pause / game-over overlay so it stays clickable */
+.skin-section {
+  position: relative;
+  z-index: 1;
+}
+
+.skin-select:focus-visible {
+  outline: 1px solid #7aa2f7;
+  outline-offset: 1px;
+}
+
+body[data-skin="neon"] {
+  background: #000;
+}
+
+body[data-skin="neon"] #board,
+body[data-skin="neon"] #next-canvas {
+  border-color: #00f0ff;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.5), 0 0 40px rgba(212, 0, 255, 0.25);
+}
+
+body[data-skin="neon"] .value {
+  color: #00f0ff;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.7);
+}
+
+body[data-skin="pastel"] #board,
+body[data-skin="pastel"] #next-canvas {
+  border-color: #e8d9f0;
+  border-radius: 10px;
+}
+
+body[data-skin="pastel"] .value {
+  color: #d7b8f3;
+}
+
+body[data-skin="pixel"] #board,
+body[data-skin="pixel"] #next-canvas {
+  border-color: #3a3a5a;
+  border-radius: 0;
+  box-shadow: 0 0 0 2px #3a3a5a; /* thick frame without changing box size */
+}
+
+body[data-skin="pixel"] .value {
+  color: #fdd835;
+}
+/* ---- /Skins ---- */
